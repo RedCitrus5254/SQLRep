@@ -46,10 +46,13 @@
 --(9,3)
 --(10, null)
 
-select 
-(select ProductName from Products where Id = ProductCategory.ProductId) as Product,
-(select CategoryName from Categories where Id = ProductCategory.CategoryId) as Category 
-from ProductCategory
+use ProductsAndCategories;
+
+select Products.ProductName, Categories.CategoryName
+from Products
+	left join ProductCategory on Products.Id = ProductCategory.ProductId
+	left join Categories on ProductCategory.CategoryId = Categories.Id
+
 
 
 
